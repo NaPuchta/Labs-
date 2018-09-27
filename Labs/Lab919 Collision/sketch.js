@@ -31,11 +31,9 @@ function LoadBoid(numboids){
 		var loc = createVector(random(width),random(width));
 		var vel = createVector(random(-3, 3), random(-3, 3));
 		var rad = 20;
-		var col = color(0,255,0);
+		var col = color(255,0,0);
 		var boid = new Boid(loc, vel, rad, col);
 		boids.push(boid);
 	}
 	console.log(boids)
 }
-
-// comment 
