@@ -36,7 +36,7 @@ function Boid(loc, vel, rad, col){
     // render() draws the ball at the new location
    this.render = function(){
       fill(this.col);
-      triangle(this.loc.x, this.loc.y, this.loc.x + 10, this.loc.y + 10, this.loc.x + 20, this.loc.y +20);
+      triangle(-5,0,5,0,0,-15);
    }
 
 }
