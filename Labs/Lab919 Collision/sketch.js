@@ -14,15 +14,15 @@ function setup(){
 	cnv.position((windowWidth-width)/2, 30);
 	background(20,20,20);
 	LoadBoid(50);
-	chaser = new Ball(createVector(5,10),33,color(0,0,255));
+	chaser = new Ball(createVector(5,10) , 33 , color(0,0,255));
 }
 
 function draw() {
 	background(255);
-	chaser.run();
 	for(var i = 0; i < boids.length; i = i + 1){
 		boids[i].run();
 	}
+	chaser.run();
 }
 
 function LoadBoid(numboids){
