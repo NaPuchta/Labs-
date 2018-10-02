@@ -14,8 +14,7 @@ function setup(){
 	cnv.position((windowWidth-width)/2, 30);
 	background(20,20,20);
 	LoadBoid(50);
-	chaser = new Ball(createVector(0,0),33,color(255,0,0));
-	draw();
+	chaser = new Ball(createVector(5,10),33,color(0,0,255));
 }
 
 function draw() {
@@ -37,4 +36,5 @@ function LoadBoid(numboids){
 	}
 	// checks to see whats in the array
 	console.log(boids)
+	console.log(chaser)
 }

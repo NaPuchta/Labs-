@@ -18,7 +18,8 @@ function Ball(loc, rad, col){
   // This function changes the location of the ball
   // by adding speed to x and y
   this.update = function(){
-     // Lerp code HERE VV
+     var mouseLoc = createVector(mouseX, mouseY);
+     this.loc = p5.Vector.lerp(this.loc, mouseLoc, .09);
   }
 
     // render() draws the ball at the new location
