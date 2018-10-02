@@ -16,10 +16,10 @@ function setup(){
 	LoadBoid(50);
 	chaser = new Ball(createVector(0,0),33,color(255,0,0));
 	draw();
-// method call ^^
 }
 
 function draw() {
+	background(255);
 	chaser.run();
 	for(var i = 0; i < boids.length; i = i + 1){
 		boids[i].run();
@@ -35,5 +35,6 @@ function LoadBoid(numboids){
 		var boid = new Boid(loc, vel, rad, col);
 		boids.push(boid);
 	}
+	// checks to see whats in the array
 	console.log(boids)
 }

@@ -1,5 +1,5 @@
 /*
-**  Ball Constructor Function
+**  Boid Constructor Function
 **  Naomi Puchta
 **  Aug 21, 2018
 */
@@ -7,8 +7,7 @@
 function Boid(loc, vel, rad, col){
   // Instance variables
   this.loc = loc;
-  this.speedX = random(-3.0, 3.0);
-  this.speedY = random(-3.0, 3.0);
+  this.vel = vel;
   this.rad = rad;
   this.col = col;
 
@@ -18,25 +17,24 @@ function Boid(loc, vel, rad, col){
     this.update();
     this.render();
   }
-  // This function changes the location of the ball
+  // This function changes the location of the boid
   // by adding speed to x and y
   this.update = function(){
-     this.locX = this.locX + this.speedX;
-     this.locY = this.locY + this.speedY;
+    this.loc.add(this.vel);
   }
 
   //checkEdges() reverses speed when the ball touches an edge
   this.checkEdges = function(){
-     if(this.locX < 0) this.speedX = -this.speedX;
-     if(this.locX > width) this.speedX = -this.speedX;
-     if(this.locY < 0) this.speedY = -this.speedY;
-     if(this.locY > height) this.speedY = -this.speedY;
+    if(this.loc.x < 0) this.vel.x = - this.vel.x;
+    if(this.loc.x > width) this.vel.x = - this.vel.x;
+    if(this.loc.y < 0) this.vel.y = - this.vel.y;
+    if(this.loc.y > height) this.vel.y = -this.vel.y;
   }
 
     // render() draws the ball at the new location
    this.render = function(){
       fill(this.col);
-      triangle(-5,0,5,0,0,-15);
+      triangle(this.loc.x,this.loc.y,this.loc.x +8,this.loc.y + 8,this.loc.x + 16,this.loc.y + 16);
    }
 
 }
