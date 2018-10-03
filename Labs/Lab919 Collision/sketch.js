@@ -14,15 +14,30 @@ function setup(){
 	cnv.position((windowWidth-width)/2, 30);
 	background(20,20,20);
 	LoadBoid(50);
+	// creates a chaser ball
 	chaser = new Ball(createVector(5,10) , 33 , color(0,0,255));
 }
 
 function draw() {
+	// runs the chaser
 	background(255);
 	for(var i = 0; i < boids.length; i = i + 1){
+		// runs all of the boids
 		boids[i].run();
 	}
-	chaser.run();
+	// To get rid of dead boids
+	for (var i = 0; i < boids.length; i++){
+		var x = boids[i];
+		var y = chaser.loc;
+		var z = x.loc;
+		// Distance
+		var dist = y.dist(z);
+		if(dist <= 10){
+			boids.splice(i,1)
+			// ^^ This is what is removing the boid itself
+		}
+		chaser.run();
+	}
 }
 
 function LoadBoid(numboids){

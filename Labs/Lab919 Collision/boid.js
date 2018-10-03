@@ -10,6 +10,7 @@ function Boid(loc, vel, rad, col){
   this.vel = vel;
   this.rad = rad;
   this.col = col;
+  this.isDead = false;
 
   // This function calls other functions
   this.run = function(){
@@ -21,6 +22,13 @@ function Boid(loc, vel, rad, col){
   // by adding speed to x and y
   this.update = function(){
     this.loc.add(this.vel);
+    var dis = this.loc.dist(chaser.loc);
+    if(dis < 100){
+      var steeringForce = p5.Vector.sub(this.loc,chaser.loc);
+      steeringForce.normalize();
+      steeringForce.mult(0.09);
+      this.vel.add(steeringForce);
+    }
   }
 
   //checkEdges() reverses speed when the ball touches an edge
@@ -33,8 +41,13 @@ function Boid(loc, vel, rad, col){
 
     // render() draws the ball at the new location
    this.render = function(){
+     push() // saves current coordinate system
+     translate(this.loc.x, this.loc.y);
+     rotate(this.vel.heading() + radians(90));
       fill(this.col);
-      triangle(this.loc.x +8,this.loc.y - 10,this.loc.x,this.loc.y + 6,this.loc.x + 16,this.loc.y + 6);
+      triangle(-5,0,5,0,0,-15);
+      pop()
    }
+
 
 }

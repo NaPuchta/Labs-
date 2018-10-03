@@ -19,7 +19,7 @@ function Ball(loc, rad, col){
   // by adding speed to x and y
   this.update = function(){
      var mouseLoc = createVector(mouseX, mouseY);
-     this.loc = p5.Vector.lerp(this.loc, mouseLoc, .09);
+     this.loc = p5.Vector.lerp(this.loc, mouseLoc, .008);
   }
 
     // render() draws the ball at the new location
