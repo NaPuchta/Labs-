@@ -18,10 +18,13 @@ function setup(){
 	background(20,20,20);
 	loadBalls(number);
 	// loads a certain amount of balls ^^
+	paddle = new Paddle(createVector(5,10) , 33 , color(255,0,0));
+	// adds a paddle to the game ^^
 }
 
 function draw() {
 	background(20,20,20,90);
+	paddle.run();
 	for(var i = 0; i < balls.length; i = i + 1){
 		// runs the balls vv
 		balls[i].run();
