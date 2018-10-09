@@ -25,11 +25,11 @@ this.run = function(){
 this.update = function(){
   this.vel.add(this.acc);
   this.loc.add(this.vel);
-  var dis = this.loc.dist(paddle.loc);
-  // checking the distance of the ball to the paddle vv
-  if(dis < 2){
-    
-
+  // checking the distance of the ball to the paddle (4 requirements) vv
+  // && is the "and" for the if: if AND if AND if = true --> do this
+  // if it hits the top of the paddle vv
+  if(this.loc.x > paddle.loc.x && this.loc.x < paddle.loc.x + 80 && this.loc.y == 600){
+    balls.splice(i,1)
   }
  }
 
