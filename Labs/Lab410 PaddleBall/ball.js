@@ -11,7 +11,6 @@ function Ball(loc, vel, radius, col){
   this.rad = radius;
   this.col = col;
   this.acc = createVector(0,.1);
-  this.isDead = false;
 
 // This function calls other functions vv
 this.run = function(){
@@ -25,8 +24,6 @@ this.run = function(){
 this.update = function(){
   this.vel.add(this.acc);
   this.loc.add(this.vel);
-  for (var i = 0; i < balls.length; i++){
-
   }
   // checking the distance of the ball to the paddle (4 requirements) vv
   // && is the "and" for the if: if AND if AND if = true --> do this
