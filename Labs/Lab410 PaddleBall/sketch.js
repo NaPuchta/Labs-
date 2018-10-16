@@ -7,7 +7,7 @@
 // global Variables
 var balls = [];
 var paddle;
-var round = 0;
+var stage = 0;
 var number = 4;
 
 // this is the setup code for the program
@@ -34,10 +34,18 @@ function draw() {
 			balls[i].loc.x < paddle.loc.x + 80 &&
 			balls[i].loc.y > paddle.loc.y &&
 			balls[i].loc.y < paddle.loc.y + 20){
-				balls.splice(i,1)
+				if(balls[i].loc.y > paddle.loc.y + 15){
+					if(stage < 5){
+						stage = stage + 1
+						number = number + 3
+						loadBalls(number);
+					}
+				}
+					balls.splice(i,1);
+				}
 			}
 		}
-	}
+
 
 	function loadBalls(numballs){
 		for(var i = 0; i < numballs; i++){
