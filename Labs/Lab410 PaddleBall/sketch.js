@@ -4,11 +4,17 @@
 ** Oct 10, 2018
 */
 
+// this is a test (trying to put score in the corner of the screen)
+//numberScore = 0;
+//numberText = 'numberScore'
+
+
 // global Variables
 var balls = [];
 var paddle;
 var stage = 0;
 var number = 4;
+var nextround = false;
 
 // this is the setup code for the program
 function setup(){
@@ -22,6 +28,7 @@ function setup(){
 	// adds a paddle to the game ^^
 }
 
+// draw function vv
 function draw() {
 	background(20,20,20,90);
 	paddle.run();
@@ -29,20 +36,36 @@ function draw() {
 		// runs the balls vv
 		balls[i].run();
 	}
+	// sets the next round to false every time vv
+	var nextround = false;
+	// checks through every ball vv
 	for (var i = balls.length - 1; i >= 0; i--){
+		// checks to see whether the ball is intercepting the paddle or not
 		if(balls[i].loc.x > paddle.loc.x &&
 			balls[i].loc.x < paddle.loc.x + 80 &&
 			balls[i].loc.y > paddle.loc.y &&
 			balls[i].loc.y < paddle.loc.y + 20){
+				// checks to see if the ball is intercepting the bottom of the paddle
 				if(balls[i].loc.y > paddle.loc.y + 15){
+					// checks to see whether next stage should start
 					if(stage < 5){
 						stage = stage + 1
 						number = number + 3
-						loadBalls(number);
+						// ^^ increasing the amount of balls loaded in next time
+						// if so setting next round to true..
+						nextround = true;
 					}
 				}
+				// removing balls from an array
 					balls.splice(i,1);
 				}
+			}
+			// confirming if round is true to remove extra balls from previous round
+			if(nextround == true){
+				nextround = false;
+				balls = [];
+				// ^^ setting array to blank and vv reloading balls
+				loadBalls(number);
 			}
 		}
 
