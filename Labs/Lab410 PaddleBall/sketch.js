@@ -72,10 +72,13 @@ function draw() {
 				// ^^ setting array to blank and vv reloading balls
 				loadBalls(number);
 			}
+			// all of this code down here revolves around printing text onto the page
 			fill(255);
 			text('Score: ' + score, 10, 20);
 			fill(255);
 			text('Next Round Chances Left: ' + roundsLeft, 10, 40);
+			// down here once all of the balls dissapear not depending on # of rounds
+			// the game ends with final score vv
 			if(balls.length == 0 && score > 0){
 				fill(255,0,0);
 				text('GAME OVER! Final Score: ' + score, 320,400);
