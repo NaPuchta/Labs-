@@ -15,6 +15,8 @@ var paddle;
 var stage = 0;
 var number = 4;
 var nextround = false;
+var score = 0;
+var roundsLeft = 5;
 
 // this is the setup code for the program
 function setup(){
@@ -50,7 +52,9 @@ function draw() {
 					// checks to see whether next stage should start
 					if(stage < 5){
 						stage = stage + 1
+						roundsLeft = roundsLeft - 1
 						number = number + 3
+						score = score + 5
 						// ^^ increasing the amount of balls loaded in next time
 						// if so setting next round to true..
 						nextround = true;
@@ -58,6 +62,7 @@ function draw() {
 				}
 				// removing balls from an array
 					balls.splice(i,1);
+					score = score + 5
 				}
 			}
 			// confirming if round is true to remove extra balls from previous round
@@ -66,6 +71,14 @@ function draw() {
 				balls = [];
 				// ^^ setting array to blank and vv reloading balls
 				loadBalls(number);
+			}
+			fill(255);
+			text('Score: ' + score, 10, 20);
+			fill(255);
+			text('Next Round Chances Left: ' + roundsLeft, 10, 40);
+			if(balls.length == 0 && score > 0){
+				fill(255,0,0);
+				text('GAME OVER! Final Score: ' + score, 320,400);
 			}
 		}
 
