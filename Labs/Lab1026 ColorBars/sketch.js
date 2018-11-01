@@ -21,6 +21,7 @@ function setup(){
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 // this loads in the bars
 
 function loadBars(numbars){
@@ -55,6 +56,8 @@ function draw(){
 
 /* function loadBars(amount){
 =======
+=======
+>>>>>>> 97363c75310bf7a9cf5ab8d58a198b8f267cd945
 // this loads in the bars vv
 function loadBars(amount){
 >>>>>>> 97363c75310bf7a9cf5ab8d58a198b8f267cd945
@@ -63,11 +66,20 @@ function loadBars(amount){
 		var loc = createVector(xloc,yloc);
 		var col = color(random(225),random(225),random(225));
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 		bars.push(new Bars(loc, vel, radius, col));
 	}
 }
 */
+=======
+		bars.push(new Bars(loc,col));
+		// pushing bars into bar array
+	}
+}
+
+// Need to change a lot, figure out tomorrow..
+>>>>>>> 97363c75310bf7a9cf5ab8d58a198b8f267cd945
 =======
 		bars.push(new Bars(loc,col));
 		// pushing bars into bar array

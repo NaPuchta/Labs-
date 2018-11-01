@@ -32,8 +32,11 @@ this.render = function(){
 
 // this creates the bars and puts them in the random order at the top
 <<<<<<< HEAD
+<<<<<<< HEAD
 /* function Bars(){
 =======
+=======
+>>>>>>> 97363c75310bf7a9cf5ab8d58a198b8f267cd945
 // really confused at this part, maybe move colors rather than moving
 // bars
 function Bars(loc,col){
@@ -41,6 +44,9 @@ function Bars(loc,col){
 	 this.loc = loc;
 	 this.col = col;
 }
+<<<<<<< HEAD
+>>>>>>> 97363c75310bf7a9cf5ab8d58a198b8f267cd945
+=======
 >>>>>>> 97363c75310bf7a9cf5ab8d58a198b8f267cd945
 
 this.render = function(){
@@ -67,7 +73,11 @@ function bubbleSort(txt){
 				// rather than text
 			}
 		}
+<<<<<<< HEAD
 */	}
+=======
+	}
+>>>>>>> 97363c75310bf7a9cf5ab8d58a198b8f267cd945
 
 // not quite sure how select sort will work so I'll have to go home and
 // figure it out vv
