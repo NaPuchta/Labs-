@@ -8,7 +8,7 @@
 var bars = [];
 numb = 5
 xloc = 10
-yloc =
+yloc = 5
 
 //put setup code here
 function setup(){
@@ -19,10 +19,6 @@ function setup(){
 	loadBars(5)
 	// keeping these numbers small until it's figured out
 }
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-// this loads in the bars
 
 function loadBars(numbars){
 	for(var i = 0; i < numbars; i++){
@@ -72,19 +68,3 @@ function loadBars(amount){
 	}
 }
 */
-=======
-		bars.push(new Bars(loc,col));
-		// pushing bars into bar array
-	}
-}
-
-// Need to change a lot, figure out tomorrow..
->>>>>>> 97363c75310bf7a9cf5ab8d58a198b8f267cd945
-=======
-		bars.push(new Bars(loc,col));
-		// pushing bars into bar array
-	}
-}
-
-// Need to change a lot, figure out tomorrow..
->>>>>>> 97363c75310bf7a9cf5ab8d58a198b8f267cd945

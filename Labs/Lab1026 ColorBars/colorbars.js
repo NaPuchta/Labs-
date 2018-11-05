@@ -21,18 +21,8 @@ this.render = function(){
 }
 
 
-
-
-
-
-
-
-
-
-
 // this creates the bars and puts them in the random order at the top
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 /* function Bars(){
 =======
 =======
@@ -74,10 +64,6 @@ function bubbleSort(txt){
 			}
 		}
 <<<<<<< HEAD
-*/	}
-=======
-	}
->>>>>>> 97363c75310bf7a9cf5ab8d58a198b8f267cd945
 
 // not quite sure how select sort will work so I'll have to go home and
 // figure it out vv
