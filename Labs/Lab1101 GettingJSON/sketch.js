@@ -13,4 +13,18 @@ function setup(){
 
 function loadingData(incomingData){
   data = incomingData;
+  bubbleSort(data)
+}
+
+function bubbleSort(data){
+	for(var i = data.length - 1; i >= 1; i--){
+		for(var j = 0; j < data.length; j++){
+			if(data[j].females > data[j+1].females){
+				console.log(data);
+				tempor = data[j+1];
+				data[j+1] = data[j];
+				data[j] = tempor;
+			}
+		}
+	}
 }
