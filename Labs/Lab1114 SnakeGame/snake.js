@@ -16,7 +16,7 @@ function Snake(loc,vel){
   }
 
   this.render = function(){
-    fill(255,0,0);
+    fill(255);
     rect(this.loc.x, this.loc.y, w, w);
   }
 
