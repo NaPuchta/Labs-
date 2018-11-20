@@ -6,6 +6,9 @@ function Snake(loc,vel){
 
   this.run = function(){
     // calls both of these functions below vv
+    // somewhere right here add code for segments before it's updated
+    // then possibly call a different run function to draw the snake (perhaps
+    // get a new js file for it?)
     this.update();
     this.render();
   }
