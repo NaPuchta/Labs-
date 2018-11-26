@@ -27,7 +27,16 @@ function Snake(loc,vel){
     // gives the color and dimensions of the snake
     fill(255);
     rect(this.loc.x, this.loc.y, w, w);
+    // once this first piece renders the rest will be pushed and rendered
+    // put an "if hits food" here otherwise infinite segments will be made
+    // segments.push(new Segment(this.loc, this.vel));
   }
 
 
 } // end of the snake function
+
+function Segments(loc, vel){
+  // add something here possibly with an if function
+  // talking about if 2nd piece follows 1st 3rd piece follows 2nd piece
+  // should possibly separate if possible? Not quite sure..
+}
