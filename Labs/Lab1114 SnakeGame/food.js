@@ -12,11 +12,15 @@ function createFood(loc){
   }
 
   this.update = function(){
-    placeholder = 1
-    this.loc.x = constrain(this.loc.x, 0, width - w);
-    this.loc.y = constrain(this.loc.y, 0, height - w);
-    // adding this in case of a possibility of the food going a little off
-    // the screen
+    this.loc.x = constrain(this.loc.x, 0, width - 21);
+    this.loc.y = constrain(this.loc.y, 0, height - 21);
+    // keeps it within the boundaries of the screen (not sure if this matters
+    // for the food as much since it is not moving around like the snake)
+    if(this.loc.x === snake.loc.x & this.loc.y === snake.loc.y){
+      this.loc.x = round(random(40))*20
+      this.loc.y = round(random(40))*20
+      // changes coordinates if both x and y coords are the same
+    }
     // the update function checks to see if the food is eaten by the Snake
     // if so then the food will dissapear and re appear somewhere else
     // most likely will use a function for the exception of the food

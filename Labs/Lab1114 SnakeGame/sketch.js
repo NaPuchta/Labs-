@@ -4,10 +4,16 @@
 var w = 20;
 // global variable for columbs and rows vv
 var cols, rows;
+// 40 cols 40 rows ^^
 var food;
 // global variable for the snake vv
 var snake;
 var segments = [];
+var locheadx;
+var locheady;
+// location of the head of the snake
+var foodseg = false;
+// if food is touched this will become true ^^
 
 // ----- this is the setup function ------
 
@@ -23,10 +29,11 @@ function setup(){
   // decreases the frameRate to 1 so that the cube moves at a slower pace
   background(0, 0, 0);
   snake = new Snake(createVector(width/2, height/2), createVector(0,0));
-  // add something for the segments here
-  food = new createFood(createVector(random(40)*20,random(40)*20));
-  console.log(food);
-  // add random loc for the food here the "8oo" means the max number it reaches
+  // add something for the segments here (add the first piece to the array)
+  food = new createFood(createVector(round(random(40))*20,round(random(40))*20));
+  // the food function is rounded because with random it goes through all
+  // possible decimals, rounding keeps it in the cols and rows
+  // 40 possible rows, picks a row and multiplies by the size of the square
 }
 
 // ----- this is the draw function -----
