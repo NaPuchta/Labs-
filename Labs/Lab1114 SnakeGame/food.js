@@ -12,6 +12,11 @@ function createFood(loc){
   }
 
   this.update = function(){
+    placeholder = 1
+    this.loc.x = constrain(this.loc.x, 0, width - w);
+    this.loc.y = constrain(this.loc.y, 0, height - w);
+    // adding this in case of a possibility of the food going a little off
+    // the screen
     // the update function checks to see if the food is eaten by the Snake
     // if so then the food will dissapear and re appear somewhere else
     // most likely will use a function for the exception of the food
@@ -20,6 +25,8 @@ function createFood(loc){
   }
 
   this.render = function(){
+    fill(0,0,255);
+    rect(this.loc.x, this.loc.y, w, w);
     // the render function creates the cube of food and gives its dimensions
     // food will be red in color
   }

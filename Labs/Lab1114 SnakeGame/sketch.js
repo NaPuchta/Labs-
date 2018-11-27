@@ -4,6 +4,7 @@
 var w = 20;
 // global variable for columbs and rows vv
 var cols, rows;
+var food;
 // global variable for the snake vv
 var snake;
 var segments = [];
@@ -23,7 +24,9 @@ function setup(){
   background(0, 0, 0);
   snake = new Snake(createVector(width/2, height/2), createVector(0,0));
   // add something for the segments here
-  // add random loc for the food here
+  food = new createFood(createVector(random(40)*20,random(40)*20));
+  console.log(food);
+  // add random loc for the food here the "8oo" means the max number it reaches
 }
 
 // ----- this is the draw function -----
@@ -34,6 +37,7 @@ function draw() {
   // so that only one cube will show up
   background(0, 0, 0, 300);
   snake.run();
+  food.run();
 }
 
 // ----- this is the keyPressed function -----
