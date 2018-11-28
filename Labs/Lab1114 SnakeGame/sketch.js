@@ -13,6 +13,7 @@ var locheadx;
 var locheady;
 // location of the head of the snake
 var foodseg = false;
+var gaveOver = false;
 // if food is touched this will become true ^^
 
 // ----- this is the setup function ------
@@ -29,6 +30,7 @@ function setup(){
   // decreases the frameRate to 1 so that the cube moves at a slower pace
   background(0, 0, 0);
   snake = new Snake(createVector(width/2, height/2), createVector(0,0));
+  //segments.push(createVector(width/2, height/2))
   // add something for the segments here (add the first piece to the array)
   food = new createFood(createVector(round(random(40))*20,round(random(40))*20));
   // the food function is rounded because with random it goes through all
