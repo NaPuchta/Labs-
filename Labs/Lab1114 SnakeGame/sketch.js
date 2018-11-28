@@ -30,9 +30,11 @@ function setup(){
   // decreases the frameRate to 1 so that the cube moves at a slower pace
   background(0, 0, 0);
   snake = new Snake(createVector(width/2, height/2), createVector(0,0));
-  //segments.push(createVector(width/2, height/2))
+  segments.push(createVector(width/2, height/2))
+  segments.push(createVector(width/2, height/2))
   // add something for the segments here (add the first piece to the array)
   food = new createFood(createVector(round(random(40))*20,round(random(40))*20));
+  console.log(segments[0].x)
   // the food function is rounded because with random it goes through all
   // possible decimals, rounding keeps it in the cols and rows
   // 40 possible rows, picks a row and multiplies by the size of the square
@@ -45,8 +47,8 @@ function setup(){
 function draw() {
   // so that only one cube will show up
   background(0, 0, 0, 300);
-  snake.run();
   food.run();
+  snake.run();
 }
 
 // ----- this is the keyPressed function -----
