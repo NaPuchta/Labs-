@@ -53,6 +53,16 @@ function draw() {
   background(0, 0, 0, 300);
   food.run();
   snake.run();
+  if(snake.loc.x === food.loc.x & food.loc.y === snake.loc.y){
+    console.log(snake)
+    food.loc.x = round(random(40))*20
+    food.loc.y = round(random(40))*20
+    console.log(food)
+    templength = segments.length - 1
+    segments.push(createVector(segments[templength].x, segments[templength.y] ))
+    // this is adding score vv
+    score = score + 10;
+  }
   text('Score: ' + score, 10, 20);
 }
 
