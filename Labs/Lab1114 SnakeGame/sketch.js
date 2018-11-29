@@ -11,9 +11,15 @@ var snake;
 var segments = [];
 var locheadx;
 var locheady;
+// head location
+// temporary variables (IGNORE)
+var tempox;
+var tempoy
+var tempox2;
+var tempoy2;
+var score = 0;
 // location of the head of the snake
-var foodseg = false;
-var gaveOver = false;
+var gaveOver = 0;
 // if food is touched this will become true ^^
 
 // ----- this is the setup function ------
@@ -31,10 +37,8 @@ function setup(){
   background(0, 0, 0);
   snake = new Snake(createVector(width/2, height/2), createVector(0,0));
   segments.push(createVector(width/2, height/2))
-  segments.push(createVector(width/2, height/2))
   // add something for the segments here (add the first piece to the array)
   food = new createFood(createVector(round(random(40))*20,round(random(40))*20));
-  console.log(segments[0].x)
   // the food function is rounded because with random it goes through all
   // possible decimals, rounding keeps it in the cols and rows
   // 40 possible rows, picks a row and multiplies by the size of the square
@@ -45,10 +49,11 @@ function setup(){
 //  draw function creates the snake
 // draw function also will include calling the food
 function draw() {
-  // so that only one cube will show up
+  // checks before anything if gameover is true to stop program
   background(0, 0, 0, 300);
   food.run();
   snake.run();
+  text('Score: ' + score, 10, 20);
 }
 
 // ----- this is the keyPressed function -----

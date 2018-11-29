@@ -19,9 +19,10 @@ function createFood(loc){
     if(this.loc.x === snake.loc.x & this.loc.y === snake.loc.y){
       this.loc.x = round(random(40))*20
       this.loc.y = round(random(40))*20
-      // changes coordinates if both x and y coords are the same
-      // make sure to add score and figure out a way to connect snake size
-      // segments.push(createVector(width/2, height/2))
+      templength = segments.length - 1
+      segments.push(createVector(segments[templength].x, segments[templength.y] ))
+      // this is adding score vv
+      score = score + 10;
     }
     // the update function checks to see if the food is eaten by the Snake
     // if so then the food will dissapear and re appear somewhere else

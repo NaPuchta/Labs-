@@ -15,15 +15,9 @@ function Snake(loc,vel){
   }
 
   this.update = function(){
-    locheadx = this.loc.x
-    locheady = this.loc.y
-    for(var i = segments.length - 1; i > 1; i--){
-      locx = segments[i-1].x
-      locy = segments[i-1].y
-      // saving close to head segment
-      segments[i].x = locx;
-      segments[i].y = locy;
-    }
+    locheadx = this.loc.x;
+    locheady = this.loc.y;
+    // head loc ^^
     // push both into array vv
     // saves location
     // adding the location to the velocity to make the snake move? (again not quite sure)
@@ -49,31 +43,24 @@ function Snake(loc,vel){
     // gives the color and dimensions of the snake
     fill(255);
     rect(this.loc.x, this.loc.y, w, w);
-    rect(locheadx, locheady, w, w);
-    for(var i = segments.length - 1; i > 1; i--){
-      rect(segments[i].x, segments[i].y, w, w)
+    for(var i = 0; i < segments.length; i++){
+      // saves seg first ^^
+      if(i > 0){
+        tempox = segments[i].x
+        tempoy = segments[i].y
+        segments[i].x = tempox2
+        segments[i].y = tempoy2
+        tempoy2 = tempoy
+        tempox2 = tempox
+        rect(segments[i].x, segments[i].y, w, w)
+      }
+      if(i === 0){
+        tempox2 = segments[i].x
+        tempoy2 = segments[i].y
+        segments[0].x = locheadx
+        segments[0].y = locheady
+        rect(segments[0].x, segments[0].y, w, w)
+      }
     }
-
-  //   //none of this here seemed to work at all
-  //   for(var i = segments - 1; i > -1; i--){
-  //     if(i === 0){
-  //       segments[0].loc.x = locheadx
-  //       segments[0].loc.y = locheady
-  //     }
-  //     else{
-  //       locx = segments[i-1].loc.x;
-  //       locy = segments[i-1].loc.y;
-  //       // saving closer to head segment
-  //       segment[i].loc.x = locx;
-  //       segment[i].loc.x = locx;
-  //     }
-  //   // fill(255);
-  //   // rect(segments[i].loc.x, segments[i].loc.y, w, w)
-  //   // }
-  //   // //once this first piece renders the rest will be pushed and rendered
-  //   //put an "if hits food" here otherwise infinite segments will be made
-  //   //segments.push(new Segment(this.loc, this.vel));
   }
-  //
-
 } // end of the snake function
