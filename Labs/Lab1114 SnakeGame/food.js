@@ -12,8 +12,8 @@ function createFood(loc){
   }
 
   this.update = function(){
-    this.loc.x = constrain(this.loc.x, 0, width - 21);
-    this.loc.y = constrain(this.loc.y, 0, height - 21);
+    this.loc.x = constrain(this.loc.x, 0, width - w);
+    this.loc.y = constrain(this.loc.y, 0, height - w);
     // keeps it within the boundaries of the screen (not sure if this matters
     // for the food as much since it is not moving around like the snake)
     // the update function checks to see if the food is eaten by the Snake

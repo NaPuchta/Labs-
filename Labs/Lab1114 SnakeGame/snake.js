@@ -24,8 +24,8 @@ function Snake(loc,vel){
     this.loc.add(this.vel);
     // keeps the cube within the dimensions of the screen
     // should work for top bottom left and right
-    this.loc.x = constrain(this.loc.x, 0, width - 21);
-    this.loc.y = constrain(this.loc.y, 0, height - 21);
+    this.loc.x = constrain(this.loc.x, 0, width - w);
+    this.loc.y = constrain(this.loc.y, 0, height - w);
     // for restart
     // if(this.loc.y === 0 & keyCode === UP_ARROW){
       // gameOver = true;

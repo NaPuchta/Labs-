@@ -53,11 +53,30 @@ function draw() {
   background(0, 0, 0, 300);
   food.run();
   snake.run();
+  // this is checking to see if the snake intersects with itself
+  for(var i = 0; i < segments.length; i++){
+    if(snake.loc.x === segments[i].x & snake.loc.y === segments[i].y){
+
+    }
+  }
   if(snake.loc.x === food.loc.x & food.loc.y === snake.loc.y){
-    console.log(snake)
     food.loc.x = round(random(40))*20
     food.loc.y = round(random(40))*20
-    console.log(food)
+    // checking to see if the food appears inside of the head first
+    if(food.loc.x === snake.loc.x & food.loc.y === snake.loc.y){
+      food.loc.x = food.loc.x - round(random(10))*20
+      food.loc.y = food.loc.y - round(random(10))*20
+      // then adding to change it up
+      food.loc.x = food.loc.x + round(random(10))*20
+      food.loc.y = food.loc.y + round(random(10))*20
+    }
+    // now checking to see if the food appears inside of the tail
+    for(var i = 0; i < segments.length; i++){
+      if(food.loc.x === segments[i].x & food.loc.y === segments[i].y){
+        food.loc.x = food.loc.x - round(random(10))*20
+        food.loc.y = food.loc.y - round(random(10))*20
+      }
+    }
     templength = segments.length - 1
     segments.push(createVector(segments[templength].x, segments[templength.y] ))
     // this is adding score vv
