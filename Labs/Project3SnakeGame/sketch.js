@@ -8,7 +8,9 @@ var cols, rows;
 var food;
 // global variable for the snake vv
 var snake;
+// this is the head of the snake
 var segments = [];
+// these are the body parts of the snake
 var locheadx;
 var locheady;
 // head location
@@ -17,7 +19,9 @@ var tempox;
 var tempoy
 var tempox2;
 var tempoy2;
+// vv is the score
 var score = 0;
+var collide = false;
 // location of the head of the snake
 var gaveOver = 0;
 // if food is touched this will become true ^^
@@ -35,7 +39,7 @@ function setup(){
   frameRate(10)
   // decreases the frameRate to 1 so that the cube moves at a slower pace
   background(0, 0, 0);
-  snake = new Snake(createVector(width/2, height/2), createVector(0,0));
+  snake = new Snake(createVector(width/2, height/2), createVector(20,0));
   segments.push(createVector(width/2, height/2))
   // add something for the segments here (add the first piece to the array)
   food = new createFood(createVector(round(random(40))*20,round(random(40))*20));
@@ -49,16 +53,13 @@ function setup(){
 //  draw function creates the snake
 // draw function also will include calling the food
 function draw() {
-  // checks before anything if gameover is true to stop program
+    // checks before anything if gameover is true to stop program
   background(0, 0, 0, 300);
   food.run();
+  if(collide === false){
   snake.run();
-  // this is checking to see if the snake intersects with itself
-  for(var i = 0; i < segments.length; i++){
-    if(snake.loc.x === segments[i].x & snake.loc.y === segments[i].y){
-
-    }
   }
+  // this is checking to see if the snake intersects with itself
   if(snake.loc.x === food.loc.x & food.loc.y === snake.loc.y){
     food.loc.x = round(random(40))*20
     food.loc.y = round(random(40))*20
@@ -82,7 +83,15 @@ function draw() {
     // this is adding score vv
     score = score + 10;
   }
+  fill(255)
   text('Score: ' + score, 10, 20);
+  if(collide === true){
+    fill(255)
+    // add a square here and some designs or something for the splash end screen
+    text('GAME OVER! Your score was: ' + score, 330, 400);
+    // add a loc here vv
+    text('To play again please REFRESH the page!!')
+  }
 }
 
 // ----- this is the keyPressed function -----
