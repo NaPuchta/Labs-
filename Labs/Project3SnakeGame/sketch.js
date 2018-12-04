@@ -23,7 +23,7 @@ var tempoy2;
 var score = 0;
 var collide = false;
 // location of the head of the snake
-var gaveOver = 0;
+var gameStart = 0;
 // if food is touched this will become true ^^
 
 // ----- this is the setup function ------
@@ -38,11 +38,12 @@ function setup(){
   cnv.position((windowWidth-width)/2, 30);
   frameRate(10)
   // decreases the frameRate to 1 so that the cube moves at a slower pace
-  background(0, 0, 0);
+  background(226, 206, 231);
   snake = new Snake(createVector(width/2, height/2), createVector(20,0));
   segments.push(createVector(width/2, height/2))
   // add something for the segments here (add the first piece to the array)
   food = new createFood(createVector(round(random(40))*20,round(random(40))*20));
+
   // the food function is rounded because with random it goes through all
   // possible decimals, rounding keeps it in the cols and rows
   // 40 possible rows, picks a row and multiplies by the size of the square
@@ -53,44 +54,56 @@ function setup(){
 //  draw function creates the snake
 // draw function also will include calling the food
 function draw() {
+  rect(200, 250, 400, 200)
+  text('WELCOME!', 250, 300);
+  text('THIS IS THE SNAKE GAME!!', 250, 350);
+  text('TO PLAY PRESS THE W BUTTON ON YOUR KEYBOARD!', 250, 370)
+  if(keyCode === 87){
+    gameStart = 1
+  }
+  // checks to see if game started
     // checks before anything if gameover is true to stop program
-  background(0, 0, 0, 300);
-  food.run();
-  if(collide === false){
-  snake.run();
-  }
-  // this is checking to see if the snake intersects with itself
-  if(snake.loc.x === food.loc.x & food.loc.y === snake.loc.y){
-    food.loc.x = round(random(40))*20
-    food.loc.y = round(random(40))*20
-    // checking to see if the food appears inside of the head first
-    if(food.loc.x === snake.loc.x & food.loc.y === snake.loc.y){
-      food.loc.x = food.loc.x - round(random(10))*20
-      food.loc.y = food.loc.y - round(random(10))*20
-      // then adding to change it up
-      food.loc.x = food.loc.x + round(random(10))*20
-      food.loc.y = food.loc.y + round(random(10))*20
-    }
-    // now checking to see if the food appears inside of the tail
-    for(var i = 0; i < segments.length; i++){
-      if(food.loc.x === segments[i].x & food.loc.y === segments[i].y){
-        food.loc.x = food.loc.x - round(random(10))*20
-        food.loc.y = food.loc.y - round(random(10))*20
+    if(gameStart === 1){
+      background(226, 206, 231, 300);
+      food.run();
+      if(collide === false){
+      snake.run();
       }
+      // this is checking to see if the snake intersects with itself
+      if(snake.loc.x === food.loc.x & food.loc.y === snake.loc.y){
+        food.loc.x = round(random(40))*20
+        food.loc.y = round(random(40))*20
+        // if the food keeps spawning in the snake head it will repeat until it
+        // is out
+        while(food.loc.x === snake.loc.x & food.loc.y === snake.loc.y){
+        food.loc.x = round(random(40))*20
+        food.loc.y = round(random(40))*20
+        }
+        // now checking to see if the food appears inside of the tail
+        for(var i = 0; i < segments.length; i++){
+          if(food.loc.x === segments[i].x & food.loc.y === segments[i].y){
+            food.loc.x = round(random(40))*20
+            food.loc.y = round(random(40))*20
+          }
+          // though there is still a change that the food will appear inside
+          // of the tail the chances are much slimmer now
+        }
+        templength = segments.length - 1
+        segments.push(createVector(segments[templength].x, segments[templength.y] ))
+        // this is adding score vv
+        score = score + 10;
+      }
+      fill(255)
+      text('Score: ' + score, 10, 20);
+      if(collide === true){
+        rect(200, 250, 400, 200)
+        food.loc.x = 900
+        food.loc.y = 900
+        fill(0)
+        text('GAME OVER!', 320, 300);
+        text(' YOUR SCORE WAS: ' + score, 320, 350);
+        text('TO PLAY AGAIN REFRESH THE PAGE!!', 320, 370)
     }
-    templength = segments.length - 1
-    segments.push(createVector(segments[templength].x, segments[templength.y] ))
-    // this is adding score vv
-    score = score + 10;
-  }
-  fill(255)
-  text('Score: ' + score, 10, 20);
-  if(collide === true){
-    fill(255)
-    // add a square here and some designs or something for the splash end screen
-    text('GAME OVER! Your score was: ' + score, 330, 400);
-    // add a loc here vv
-    text('To play again please REFRESH the page!!')
   }
 }
 

@@ -12,19 +12,12 @@ function createFood(loc){
   }
 
   this.update = function(){
-    this.loc.x = constrain(this.loc.x, 0, width - w);
-    this.loc.y = constrain(this.loc.y, 0, height - w);
-    // keeps it within the boundaries of the screen (not sure if this matters
-    // for the food as much since it is not moving around like the snake)
-    // the update function checks to see if the food is eaten by the Snake
-    // if so then the food will dissapear and re appear somewhere else
-    // most likely will use a function for the exception of the food
-    // change the locs to random within this function (too much of a hassle
-    // to change random out side of this function)
+    // there really isnt anything in here I mostly did everything in the draw
+    // function
   }
 
   this.render = function(){
-    fill(0,0,255);
+    fill(231,88,116);
     rect(this.loc.x, this.loc.y, w, w);
     // the render function creates the cube of food and gives its dimensions
     // food will be red in color
