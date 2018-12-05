@@ -12,8 +12,10 @@ function createFood(loc){
   }
 
   this.update = function(){
-    // there really isnt anything in here I mostly did everything in the draw
-    // function
+    this.loc.x = constrain(this.loc.x, 0, width - w);
+    this.loc.y = constrain(this.loc.y, 0, height - w);
+    // adding the constrain just in case it goes off of the screen
+    // this happened a couple of times 
   }
 
   this.render = function(){
