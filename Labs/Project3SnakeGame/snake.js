@@ -6,9 +6,6 @@ function Snake(loc,vel){
 
   this.run = function(){
     // calls both of these functions below vv
-    // somewhere right here add code for segments before it's updated
-    // then possibly call a different run function to draw the snake (perhaps
-    // get a new js file for it?)
     this.update();
     this.render();
 
@@ -19,10 +16,9 @@ function Snake(loc,vel){
       locheadx = this.loc.x;
       locheady = this.loc.y;
       // head loc ^^
-      // saves location
+      // (saves location)
       this.loc.add(this.vel);
-      // keeps the cube within the dimensions of the screen
-      // should work for top bottom left and right
+      // keeps the cube within the dimensions of the screen vv
       this.loc.x = constrain(this.loc.x, 0, width - w);
       this.loc.y = constrain(this.loc.y, 0, height - w);
     }
@@ -30,7 +26,7 @@ function Snake(loc,vel){
 
   this.render = function(){
     if(collide === false){
-      // gives the color and dimensions of the snake
+      // if collide is false continue normally ^^
       fill(255);
       rect(this.loc.x, this.loc.y, w, w);
       for(var i = 0; i < segments.length; i++){
@@ -51,11 +47,16 @@ function Snake(loc,vel){
           segments[0].y = locheady
           rect(segments[0].x, segments[0].y, w, w)
         }
+        // changes the first snake part to the head of the snakes location
+        // however when it is not the first (after saving the first)
+        // its a loop
       }
       for(var i = 0; i < segments.length; i++){
         if(snake.loc.x === segments[i].x & snake.loc.y === segments[i].y){
           segments = [];
           collide = true;
+          // so this is where if there is a collision the collide turns to true
+          // so that the snake game can end
         }
       }
 

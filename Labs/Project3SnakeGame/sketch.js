@@ -6,15 +6,15 @@ var w = 20;
 var cols, rows;
 // 40 cols 40 rows ^^
 var food;
-// global variable for the snake vv
+// the food that pops up on the screen ^^
 var snake;
-// this is the head of the snake
+// this is the head of the snake ^^
 var segments = [];
-// these are the body parts of the snake
+// these are the body parts of the snake ^^
 var locheadx;
 var locheady;
-// head location
-// temporary variables (IGNORE)
+// head locations (x and y)^^
+// temporary variables (IGNORE) vv
 var tempox;
 var tempoy
 var tempox2;
@@ -22,37 +22,36 @@ var tempoy2;
 // vv is the score
 var score = 0;
 var collide = false;
-// location of the head of the snake
+// when collide is true game will end var ^^
 var gameStart = 0;
-// if food is touched this will become true ^^
+// if w is pressed this will go to 1 to start the game ^^
 
 // ----- this is the setup function ------
 
 function setup(){
-  // this is the setup code
   var cnv = createCanvas(800, 800);
-  // creates columbs and rows for the cube to go in (eventually of course)
+  // creates columbs and rows for the snake to go in vv
   cols = width/w;
   rows = height/w;
-  // creates the number of columbs possible (not the actual columbs however)
+  // There are 40 cols and 40 rows in this screen
   cnv.position((windowWidth-width)/2, 30);
   frameRate(10)
-  // decreases the frameRate to 1 so that the cube moves at a slower pace
+  // decreases the frameRate to slow down snake (so its not speeding around)
   background(226, 206, 231);
   snake = new Snake(createVector(width/2, height/2), createVector(20,0));
+  // creation of the snake head ^^
   segments.push(createVector(width/2, height/2))
-  // add something for the segments here (add the first piece to the array)
+  // adding the first piece of the body to the array ^^
   food = new createFood(createVector(round(random(40))*20,round(random(40))*20));
-
-  // the food function is rounded because with random it goes through all
-  // possible decimals, rounding keeps it in the cols and rows
-  // 40 possible rows, picks a row and multiplies by the size of the square
+  // creates the food ^^
 }
 
 // ----- this is the draw function -----
 
-//  draw function creates the snake
-// draw function also will include calling the food
+//  draw function calls for the snake and food to run
+// draw function also will include checking for food collision
+// on top of this the title screen and end screen is made here
+// and finally the food is checked to make sure it is not drawn in the snake
 function draw() {
   rect(200, 250, 400, 200)
   text('WELCOME!', 250, 300);
@@ -66,35 +65,39 @@ function draw() {
     if(gameStart === 1){
       background(226, 206, 231, 300);
       food.run();
+      // if there is no snake collision then continue vv
       if(collide === false){
       snake.run();
       }
-      // this is checking to see if the snake intersects with itself
+      // this is checking to see if the snake intersects with food
       if(snake.loc.x === food.loc.x & food.loc.y === snake.loc.y){
         food.loc.x = round(random(40))*20
         food.loc.y = round(random(40))*20
+        // gives new location ^^
         // if the food keeps spawning in the snake head it will repeat until it
-        // is out
+        // is out vv
         while(food.loc.x === snake.loc.x & food.loc.y === snake.loc.y){
         food.loc.x = round(random(40))*20
         food.loc.y = round(random(40))*20
         }
-        // now checking to see if the food appears inside of the tail
+        // now checking to see if the food appears inside of the tail vv
         for(var i = 0; i < segments.length; i++){
           if(food.loc.x === segments[i].x & food.loc.y === segments[i].y){
             food.loc.x = round(random(40))*20
             food.loc.y = round(random(40))*20
           }
-          // though there is still a change that the food will appear inside
+          //  ^^ though there is still a change that the food will appear inside
           // of the tail the chances are much slimmer now
         }
         templength = segments.length - 1
         segments.push(createVector(segments[templength].x, segments[templength.y] ))
-        // this is adding score vv
+        // this is adding score vv 
         score = score + 10;
       }
+      // this is where the score is displayed vv
       fill(255)
       text('Score: ' + score, 10, 20);
+      // this is the end screen vv
       if(collide === true){
         rect(200, 250, 400, 200)
         food.loc.x = 900
