@@ -28,6 +28,11 @@ var gameStart = 0;
 var addScore = 0;
 // this is how much score is added
 var rageMode = false;
+// the starting color vv
+var startcolor = 255;
+// starting out with 13
+var intro = true;
+
 // ... totally not an easter egg move along ^^
 
 // ----- this is the setup function ------
@@ -35,6 +40,11 @@ var rageMode = false;
 function setup(){
   var cnv = createCanvas(800, 800);
   // creates columbs and rows for the snake to go in vv
+  collide = false;
+  score = 0
+  rageMode = false;
+  keyCode = 0;
+  // this is for the reset of the game
   cols = width/w;
   rows = height/w;
   // There are 40 cols and 40 rows in this screen
@@ -57,11 +67,11 @@ function setup(){
 // on top of this the title screen and end screen is made here
 // and finally the food is checked to make sure it is not drawn in the snake
 function draw() {
-  rect(200, 250, 400, 200)
-  text('WELCOME!', 250, 300);
-  text('THIS IS THE SNAKE GAME!!', 250, 350);
-  text('TO PLAY PRESS THE W BUTTON ON YOUR KEYBOARD!', 250, 370)
-  // picking a game mode (this is the unique part about the game)
+    rect(200, 250, 400, 200)
+    text('WELCOME!', 250, 300);
+    text('THIS IS THE SNAKE GAME!!', 250, 350);
+    text('TO PLAY PRESS THE W BUTTON ON YOUR KEYBOARD!', 250, 370)
+    // picking a game mode (this is the unique part about the game)
   if(keyCode === 87){
     rect(200, 250, 400, 200)
     text('SELECT A MODE!', 250, 300);
@@ -160,6 +170,7 @@ function draw() {
           // some real nice text ^^
         }
         if(rageMode === false){
+          gameStart = 0
           rect(200, 250, 400, 200)
           food.loc.x = 900
           food.loc.y = 900
@@ -167,6 +178,10 @@ function draw() {
           text('GAME OVER!', 320, 300);
           text(' YOUR SCORE WAS: ' + score, 320, 350);
           text('TO PLAY AGAIN REFRESH THE PAGE!!', 320, 370)
+          if(keyCode === 13){
+            // this is where you can press enter to restart the game
+            setup()
+          }
         }
         // the end screen for those who appreciate their eyes
     }

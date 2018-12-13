@@ -27,7 +27,7 @@ function Snake(loc,vel){
   this.render = function(){
     if(collide === false){
       // if collide is false continue normally ^^
-      fill(255);
+      fill(startcolor);
       rect(this.loc.x, this.loc.y, w, w);
       for(var i = 0; i < segments.length; i++){
         // saves seg first ^^
@@ -38,19 +38,25 @@ function Snake(loc,vel){
           segments[i].y = tempoy2
           tempoy2 = tempoy
           tempox2 = tempox
+          startcolor = startcolor - 5
+          fill(startcolor)
           rect(segments[i].x, segments[i].y, w, w)
+
         }
         if(i === 0){
           tempox2 = segments[i].x
           tempoy2 = segments[i].y
           segments[0].x = locheadx
           segments[0].y = locheady
+          startcolor = startcolor - 5
+          fill(startcolor)
           rect(segments[0].x, segments[0].y, w, w)
         }
         // changes the first snake part to the head of the snakes location
         // however when it is not the first (after saving the first)
         // its a loop
       }
+      startcolor = 255
       for(var i = 0; i < segments.length; i++){
         if(snake.loc.x === segments[i].x & snake.loc.y === segments[i].y){
           segments = [];
